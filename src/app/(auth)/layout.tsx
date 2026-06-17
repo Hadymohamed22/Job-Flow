@@ -8,9 +8,9 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="auth-layout min-h-screen">
+    <div className="auth-layout min-h-screen relative overflow-hidden before:pointer-events-none before:absolute before:-top-28 before:-left-36 before:size-72 before:md:size-125 before:lg:size-162.5 before:rounded-full before:bg-custom-primary/5 before:blur-3xl before:z-0 after:pointer-events-none after:absolute after:-bottom-36 after:-right-36 after:w-72 after:h-72 after:md:size-125 after:lg:size-162.5 after:rounded-full after:bg-custom-green/5 after:blur-3xl after:z-0">
       {/* Header */}
-      <header className="px-4 md:px-6 min-h-16 flex items-center justify-between">
+      <header className="px-4 md:px-6 min-h-16 flex items-center justify-between relative z-20">
         {/* Logo */}
         <Logo withText />
 
@@ -27,7 +27,7 @@ export default function AuthLayout({
       {children}
 
       {/* Footer */}
-      <footer className="px-4 md:px-6 min-h-16 flex items-center justify-between font-jetbrains text-xs text-gray-400 border-t border-[#4645544D]">
+      <footer className="px-4 md:px-6 min-h-16 flex items-center justify-between font-jetbrains text-xs text-gray-400 border-t border-[#4645544D] relative z-20">
         {/* Copyright */}
         <Copyright />
 

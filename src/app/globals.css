@@ -48,7 +48,8 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   /* Colors */
-  --color-custom-primary: #6366F1;
+  --color-custom-primary: #C0C1FF;
+  --color-tc-primary: #1000A9;
   --color-custom-green: #10B981;
   --color-custom-red: #F43F5E;
   --color-bg: #0F172A;

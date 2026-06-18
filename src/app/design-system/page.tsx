@@ -1,4 +1,5 @@
 import { Button } from "@/shared/components/ui/button";
+import { Checkbox } from "@/shared/components/ui/checkbox";
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
 
@@ -52,6 +53,14 @@ export default function Page() {
 
           {/* Password Input */}
           <Input type="password" placeholder="••••••••••" />
+        </div>
+
+        {/* Remember Me */}
+        <div className="remember-me flex items-center gap-2">
+          <Checkbox id="RememberMe" />
+          <Label htmlFor="RememberMe" className="cursor-pointer mt-1.5">
+            Remember Me
+          </Label>
         </div>
       </div>
     </div>

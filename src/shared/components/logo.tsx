@@ -1,8 +1,15 @@
 import { ShoppingBag } from "lucide-react";
+import { cn } from "../lib/utils/tailwind-merge";
 
-export default function Logo({ withText }: { withText?: boolean }) {
+export default function Logo({
+  withText,
+  className,
+}: {
+  withText?: boolean;
+  className?: string;
+}) {
   return (
-    <div className="logo-container flex items-center gap-2">
+    <div className={cn("logo-container flex items-center gap-2", className)}>
       {/* Logo Box */}
       <div className="logo-box size-8 bg-custom-primary text-tc-primary rounded-xs text-lg font-black flex items-center justify-center">
         <ShoppingBag size={18} />

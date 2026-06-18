@@ -27,7 +27,7 @@ export default function AuthLayout({
       {children}
 
       {/* Footer */}
-      <footer className="px-4 md:px-6 min-h-16 flex items-center justify-between font-jetbrains text-xs text-gray-400 border-t border-[#4645544D] relative z-20">
+      <footer className="px-4 md:px-6 min-h-16 flex flex-col gap-1 md:flex-row md:gap-0 text-center md:text-start items-center justify-center md:justify-between font-jetbrains text-xs text-gray-400 border-t border-[#4645544D] relative z-20">
         {/* Copyright */}
         <Copyright />
 

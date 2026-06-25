@@ -2,7 +2,13 @@
 import { Button } from "@/shared/components/ui/button";
 import { Checkbox } from "@/shared/components/ui/checkbox";
 import { Input } from "@/shared/components/ui/input";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/shared/components/ui/input-otp";
 import { Label } from "@/shared/components/ui/label";
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
 import { toast } from "sonner";
 
 export default function Page() {
@@ -126,6 +132,18 @@ export default function Page() {
             Default Toast
           </button>
         </div>
+
+        {/* OTP Input */}
+        <InputOTP maxLength={6} pattern={REGEXP_ONLY_DIGITS_AND_CHARS}>
+          <InputOTPGroup>
+            <InputOTPSlot index={0} />
+            <InputOTPSlot index={1} />
+            <InputOTPSlot index={2} />
+            <InputOTPSlot index={3} />
+            <InputOTPSlot index={4} />
+            <InputOTPSlot index={5} />
+          </InputOTPGroup>
+        </InputOTP>
       </div>
     </div>
   );

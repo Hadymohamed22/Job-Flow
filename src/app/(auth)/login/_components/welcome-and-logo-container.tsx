@@ -1,4 +1,6 @@
 import Logo from "@/shared/components/logo";
+import AuthFormTitle from "../../_components/auth-form-title";
+import AuthFormSubTitle from "../../_components/auth-form-sub-title";
 
 type WelcomeAndLogoContainerProps = {
   title: string;
@@ -15,10 +17,10 @@ export default function WelcomeAndLogoContainer({
     <div className="welcome-and-logo-container flex flex-col items-center text-center">
       {/* Logo */}
       <Logo className="mb-4" withText={logoWithText} />
-      {/* Welcome Title */}
-      <h3 className="text-3xl font-semibold text-white">{title}</h3>
+      {/* Auth Form Title */}
+      <AuthFormTitle title={title} />
       {/* Sub Message */}
-      <p className="mt-1 text-sm text-gray-500">{subTitle}</p>
+      <AuthFormSubTitle subTitle={subTitle} />
     </div>
   );
 }

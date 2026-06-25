@@ -27,7 +27,10 @@ export default function ForgetPassContainer() {
         <SendEmailStep setCurrentStep={setCurrentStep} />
       ) : // Verify Code Step
       currentStep === FORGET_PASS_STEPS.VERIFY_CODE ? (
-        <VerifyCodeStep email={forgetPassSharedData.email} />
+        <VerifyCodeStep
+          setCurrentStep={setCurrentStep}
+          email={forgetPassSharedData.email}
+        />
       ) : (
         // New Pass Step
         currentStep === FORGET_PASS_STEPS.NEW_PASSWORD && <NewPassStep />

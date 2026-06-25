@@ -29,7 +29,6 @@ export default function SendEmailForm({ setVerifyCodeStep }: Props) {
       </div>
 
       {/* Send Code Button */}
-      {/* Sign In Button */}
       <Button
         className="shadow-lg shadow-[#C0C1FF1A] bg-[#8083FF] h-14 font-bold"
         onClick={setVerifyCodeStep}

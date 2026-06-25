@@ -5,7 +5,7 @@ import AuthFormTitle from "../../_components/auth-form-title";
 type Props = {
   icon: React.ReactNode;
   title: string;
-  subTitle: string;
+  subTitle: string | React.ReactNode;
 };
 
 export default function ForgetPassContainerHeader({

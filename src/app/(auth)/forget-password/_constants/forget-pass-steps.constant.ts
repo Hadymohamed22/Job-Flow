@@ -1,0 +1,5 @@
+export const FORGET_PASS_STEPS = {
+  SEND_EMAIL: "SEND_EMAIL",
+  VERIFY_CODE: "VERIFY_CODE",
+  NEW_PASSWORD: "NEW_PASSWORD",
+} as const;

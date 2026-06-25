@@ -1,7 +1,9 @@
+"use client";
 import { Button } from "@/shared/components/ui/button";
 import { Checkbox } from "@/shared/components/ui/checkbox";
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
+import { toast } from "sonner";
 
 export default function Page() {
   return (
@@ -61,6 +63,68 @@ export default function Page() {
           <Label htmlFor="RememberMe" className="cursor-pointer mt-1.5">
             Remember Me
           </Label>
+        </div>
+
+        {/* Toasts */}
+        {/* Toast Test Buttons */}
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            className="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600 text-sm"
+            onClick={() =>
+              toast.success("This is a success toast!", {
+                className:
+                  "!bg-emerald-50 !border-emerald-500 !text-emerald-900 dark:!bg-emerald-800 dark:!border-emerald-400 dark:!text-emerald-100",
+              })
+            }
+          >
+            Success Toast
+          </button>
+          <button
+            type="button"
+            className="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600 text-sm"
+            onClick={() => toast.info("This is an info toast!")}
+          >
+            Info Toast
+          </button>
+          <button
+            type="button"
+            className="px-4 py-2 rounded bg-yellow-500 text-black hover:bg-yellow-600 text-sm"
+            onClick={() => toast.warning("This is a warning toast!")}
+          >
+            Warning Toast
+          </button>
+          <button
+            type="button"
+            className="px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600 text-sm"
+            onClick={() =>
+              toast.error("This is an error toast!", {
+                className:
+                  "!bg-red-50 !border-red-500 !text-red-900 dark:!bg-red-800 dark:!border-red-400 dark:!text-red-100",
+              })
+            }
+          >
+            Error Toast
+          </button>
+          <button
+            type="button"
+            className="px-4 py-2 rounded bg-purple-500 text-white hover:bg-purple-600 text-sm"
+            onClick={() =>
+              toast.loading(
+                "This is a loading toast. It will disappear in 2s.",
+                { duration: 2000 },
+              )
+            }
+          >
+            Loading Toast
+          </button>
+          <button
+            type="button"
+            className="px-4 py-2 rounded bg-gray-500 text-white hover:bg-gray-600 text-sm"
+            onClick={() => toast("This is a normal toast!")}
+          >
+            Default Toast
+          </button>
         </div>
       </div>
     </div>

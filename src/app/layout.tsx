@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/shared/lib/utils/tailwind-merge";
+import Providers from "@/shared/providers";
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -36,7 +37,9 @@ export default function RootLayout({
         jetBrainsMono.variable,
       )}
     >
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

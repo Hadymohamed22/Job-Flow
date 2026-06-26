@@ -7,7 +7,7 @@ import SendEmailStep from "./send-email-step";
 import VerifyCodeStep from "./verify-code-step";
 import NewPassStep from "./new-pass-step";
 
-type ForgetPassSharedData = {
+export type ForgetPassSharedData = {
   email: string;
 };
 
@@ -24,7 +24,10 @@ export default function ForgetPassContainer() {
     <div className="forget-pass-container p-8 flex flex-col gap-8 border border-[#908FA033] rounded-lg shadow-md shadow-[#171F33B2] mx-5 container md:w-6/12 lg:w-4/12">
       {currentStep === FORGET_PASS_STEPS.SEND_EMAIL ? (
         // Send Email Step
-        <SendEmailStep setCurrentStep={setCurrentStep} />
+        <SendEmailStep
+          setCurrentStep={setCurrentStep}
+          setSharedData={setForgetPassSharedData}
+        />
       ) : // Verify Code Step
       currentStep === FORGET_PASS_STEPS.VERIFY_CODE ? (
         <VerifyCodeStep

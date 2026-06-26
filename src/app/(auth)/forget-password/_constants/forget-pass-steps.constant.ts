@@ -3,3 +3,8 @@ export const FORGET_PASS_STEPS = {
   VERIFY_CODE: "VERIFY_CODE",
   NEW_PASSWORD: "NEW_PASSWORD",
 } as const;
+
+export const LOCAL_STORAGE_KEYS = {
+  CURRENT_EMAIL: "CURRENT_EMAIL",
+  RESEND_DATE: "RESEND_DATE",
+} as const;

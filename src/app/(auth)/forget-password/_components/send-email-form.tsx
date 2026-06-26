@@ -13,6 +13,7 @@ import useSendEmail from "../_hooks/use-send-email";
 import ErrorBox from "@/shared/components/error-box";
 import { ForgetPassSharedData } from "./forget-pass-container";
 import { successToast } from "@/shared/lib/utils/toasts.util";
+import { LOCAL_STORAGE_KEYS } from "../_constants/forget-pass-steps.constant";
 
 type Props = {
   setVerifyCodeStep: () => void;
@@ -41,6 +42,18 @@ export default function SendEmailForm({
 
   // Handlers
   const onSubmit: SubmitHandler<SendEmailFieldsType> = async (values) => {
+    const currentEmail = localStorage.getItem(LOCAL_STORAGE_KEYS.CURRENT_EMAIL);
+    const resendTime = Number(
+      localStorage.getItem(LOCAL_STORAGE_KEYS.RESEND_DATE),
+    );
+
+    if (
+      currentEmail &&
+      values.email === currentEmail &&
+      resendTime > new Date().getTime()
+    )
+      return setVerifyCodeStep();
+
     try {
       await sendEmailTo(
         { email: values.email },
@@ -50,6 +63,18 @@ export default function SendEmailForm({
             setSharedData((prev) => {
               return { ...prev, email: values.email };
             });
+            // Save Email & Dates in local storage
+            const currentTime = new Date().getTime();
+            localStorage.setItem(
+              LOCAL_STORAGE_KEYS.CURRENT_EMAIL,
+              values.email,
+            );
+            localStorage.setItem(
+              LOCAL_STORAGE_KEYS.RESEND_DATE,
+              JSON.stringify(currentTime + 60000),
+            );
+
+            // Success Toast
             successToast("Code Send Successfully !");
 
             //  Go To Verify Code Step

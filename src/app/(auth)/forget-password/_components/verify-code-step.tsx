@@ -3,6 +3,7 @@ import ForgetPassContainerHeader from "./forget-pass-container-header";
 import VerifyCodeForm from "./verify-code-form";
 import { FORGET_PASS_STEPS_TYPE } from "../_types/forget-pass-steps";
 import { ForgetPassSharedData } from "./forget-pass-container";
+import Resend from "./resend";
 
 type Props = {
   email: string;
@@ -46,13 +47,8 @@ export default function VerifyCodeStep({
         email={email}
       />
 
-      {/* Resend Code */}
-      <p className="mt-2 text-center text-[#6A7271]">
-        Didn{"'"}t receive code?{" "}
-        <span className="text-white/70 duration-300 hover:text-white cursor-pointer">
-          Resend
-        </span>
-      </p>
+      {/* Resend */}
+      <Resend email={email} />
     </>
   );
 }

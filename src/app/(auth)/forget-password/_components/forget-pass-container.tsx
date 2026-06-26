@@ -9,15 +9,18 @@ import NewPassStep from "./new-pass-step";
 
 export type ForgetPassSharedData = {
   email: string;
+  resetToken: string;
 };
 
 export default function ForgetPassContainer() {
   // States
-  const [currentStep, setCurrentStep] =
-    useState<FORGET_PASS_STEPS_TYPE>("SEND_EMAIL");
+  const [currentStep, setCurrentStep] = useState<FORGET_PASS_STEPS_TYPE>(
+    FORGET_PASS_STEPS.SEND_EMAIL,
+  );
   const [forgetPassSharedData, setForgetPassSharedData] =
     useState<ForgetPassSharedData>({
-      email: "hadysapry60@gmail.com",
+      email: "",
+      resetToken: "",
     });
 
   return (
@@ -33,6 +36,7 @@ export default function ForgetPassContainer() {
         <VerifyCodeStep
           setCurrentStep={setCurrentStep}
           email={forgetPassSharedData.email}
+          setSharedData={setForgetPassSharedData}
         />
       ) : (
         // New Pass Step

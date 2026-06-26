@@ -2,13 +2,19 @@ import { Mail } from "lucide-react";
 import ForgetPassContainerHeader from "./forget-pass-container-header";
 import VerifyCodeForm from "./verify-code-form";
 import { FORGET_PASS_STEPS_TYPE } from "../_types/forget-pass-steps";
+import { ForgetPassSharedData } from "./forget-pass-container";
 
 type Props = {
   email: string;
   setCurrentStep: React.Dispatch<React.SetStateAction<FORGET_PASS_STEPS_TYPE>>;
+  setSharedData: React.Dispatch<React.SetStateAction<ForgetPassSharedData>>;
 };
 
-export default function VerifyCodeStep({ email, setCurrentStep }: Props) {
+export default function VerifyCodeStep({
+  email,
+  setCurrentStep,
+  setSharedData,
+}: Props) {
   return (
     <>
       {/* Verify Code Header */}
@@ -35,7 +41,9 @@ export default function VerifyCodeStep({ email, setCurrentStep }: Props) {
 
       {/* Verify Code Form */}
       <VerifyCodeForm
+        setSharedData={setSharedData}
         setNewPasswordStep={() => setCurrentStep("NEW_PASSWORD")}
+        email={email}
       />
 
       {/* Resend Code */}

@@ -2,7 +2,12 @@ import { KeyRound } from "lucide-react";
 import ForgetPassContainerHeader from "./forget-pass-container-header";
 import NewPasswordForm from "./new-password-form";
 
-export default function NewPassStep() {
+type Props = {
+  email: string;
+  resetToken: string;
+};
+
+export default function NewPassStep({ email, resetToken }: Props) {
   return (
     <>
       {/* New Password Header */}
@@ -13,7 +18,7 @@ export default function NewPassStep() {
       />
 
       {/* New Password Form */}
-      <NewPasswordForm />
+      <NewPasswordForm email={email} resetToken={resetToken} />
     </>
   );
 }

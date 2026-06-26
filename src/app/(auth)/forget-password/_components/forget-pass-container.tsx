@@ -40,7 +40,12 @@ export default function ForgetPassContainer() {
         />
       ) : (
         // New Pass Step
-        currentStep === FORGET_PASS_STEPS.NEW_PASSWORD && <NewPassStep />
+        currentStep === FORGET_PASS_STEPS.NEW_PASSWORD && (
+          <NewPassStep
+            email={forgetPassSharedData.email}
+            resetToken={forgetPassSharedData.resetToken}
+          />
+        )
       )}
     </div>
   );

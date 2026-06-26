@@ -18,3 +18,11 @@ export type VerifyCodeResponse = { message: string } & (
   | VerifyCodeSuccessResponse
   | VerifyCodeErrorResponse
 );
+
+type ChangePasswordBase = { message: string };
+
+type ChangePasswordErrorResponse = ChangePasswordBase & { error: boolean };
+
+export type ChangePassResponse =
+  | ChangePasswordBase
+  | ChangePasswordErrorResponse;

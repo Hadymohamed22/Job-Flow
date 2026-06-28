@@ -4,9 +4,11 @@ import { cn } from "../lib/utils/tailwind-merge";
 export default function Logo({
   withText,
   className,
+  textClassName,
 }: {
   withText?: boolean;
   className?: string;
+  textClassName?: string;
 }) {
   return (
     <div className={cn("logo-container flex items-center gap-2", className)}>
@@ -16,7 +18,12 @@ export default function Logo({
       </div>
       {withText && (
         // Logo Text
-        <h1 className="text-xl md:text-2xl font-black text-custom-primary">
+        <h1
+          className={cn(
+            "text-xl md:text-2xl font-black text-custom-primary",
+            textClassName,
+          )}
+        >
           JobFlow
         </h1>
       )}

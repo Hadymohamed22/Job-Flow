@@ -5,6 +5,7 @@ import Statistics from "./_components/statistics";
 import BoxTitle from "./_components/box-title";
 import Link from "next/link";
 import ApplicationsChart from "./_components/applications-chart";
+import ActivityFeedContainer from "./_components/activity-feed-container";
 
 export default function Dashboard() {
   return (
@@ -31,9 +32,18 @@ export default function Dashboard() {
       <Statistics />
 
       {/* Activity Container */}
-      <div className="activity-container grid grid-cols-1 grid-rows-3 md:grid-cols-3 md:grid-rows-2 gap-4 md:gap-5">
+      <div
+        className="
+    activity-container grid gap-4 lg:gap-5
+    grid-cols-1
+    [grid-template-areas:'chart''feed''interviews']
+    lg:grid-cols-3
+    lg:[grid-template-areas:'chart_chart_feed''interviews_interviews_feed']
+    auto-rows-min items-start
+  "
+      >
         {/* Applications Chart */}
-        <div className="application-chart col-span-1 row-span-1 md:col-span-2 md:row-span-1 bg-[#2D344966] border border-[#908FA033] rounded-lg p-4">
+        <div className="[grid-area:chart] bg-[#2D344966] border border-[#908FA033] rounded-lg p-4">
           <div className="header flex items-center justify-between">
             {/* Title */}
             <BoxTitle title={"Applications Sent"} />
@@ -49,15 +59,17 @@ export default function Dashboard() {
         </div>
 
         {/* Activity Feed */}
-        <div className="activity-feed col-span-1 row-span-1 md:col-span-1 md:row-span-2 bg-[#2D344966] border border-[#908FA033] rounded-lg p-4">
+        <div className="[grid-area:feed] bg-[#2D344966] border border-[#908FA033] rounded-lg p-4 flex flex-col self-start">
           <div className="header flex items-center justify-between border-b border-[#464554] pb-4">
             {/* Title */}
             <BoxTitle title={"Activity Feed"} />
           </div>
+
+          <ActivityFeedContainer />
         </div>
 
         {/* UpComing Interviews */}
-        <div className="upcoming-interviews col-span-1 row-span-1 md:col-span-2 md:row-span-1 bg-[#2D344966] border border-[#908FA033] rounded-lg p-4">
+        <div className="[grid-area:interviews] bg-[#2D344966] border border-[#908FA033] rounded-lg p-4">
           <div className="header flex items-center justify-between border-b border-[#464554] pb-4">
             {/* Title */}
             <BoxTitle title={"Upcoming Interviews"} />

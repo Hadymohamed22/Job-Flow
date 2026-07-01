@@ -6,6 +6,7 @@ import BoxTitle from "./_components/box-title";
 import Link from "next/link";
 import ApplicationsChart from "./_components/applications-chart";
 import ActivityFeedContainer from "./_components/activity-feed-container";
+import InterviewsContainer from "./_components/interviews-container";
 
 export default function Dashboard() {
   return (
@@ -82,6 +83,9 @@ export default function Dashboard() {
               View All
             </Link>
           </div>
+
+          {/* Interviews Box's Container */}
+          <InterviewsContainer />
         </div>
       </div>
     </>

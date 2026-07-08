@@ -35,13 +35,10 @@ export default function Dashboard() {
       {/* Activity Container */}
       <div
         className="
-    activity-container grid gap-4 lg:gap-5
-    grid-cols-1
-    [grid-template-areas:'chart''feed''interviews']
-    lg:grid-cols-3
-    lg:[grid-template-areas:'chart_chart_feed''interviews_interviews_feed']
-    auto-rows-min items-start
-  "
+      activity-container grid gap-4 lg:gap-5 grid-cols-1 lg:grid-cols-3
+      [grid-template-areas:'chart'_'feed'_'interviews']
+      lg:[grid-template-areas:'chart_chart_feed'_'interviews_interviews_feed']
+      "
       >
         {/* Applications Chart */}
         <div className="[grid-area:chart] bg-[#2D344966] border border-[#908FA033] rounded-lg p-4">
@@ -60,7 +57,7 @@ export default function Dashboard() {
         </div>
 
         {/* Activity Feed */}
-        <div className="[grid-area:feed] bg-[#2D344966] border border-[#908FA033] rounded-lg p-4 flex flex-col self-start">
+        <div className="[grid-area:feed] bg-[#2D344966] border border-[#908FA033] rounded-lg p-4 flex flex-col">
           <div className="header flex items-center justify-between border-b border-[#464554] pb-4">
             {/* Title */}
             <BoxTitle title={"Activity Feed"} />

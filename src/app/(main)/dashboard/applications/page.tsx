@@ -2,6 +2,7 @@ import { Button } from "@/shared/components/ui/button";
 import PageHeaderText from "../_components/page-header-text";
 import { Download } from "lucide-react";
 import StatusMenu from "./_components/status-menu";
+import ApplicationsTable from "./_components/applications-table";
 
 export default function Page() {
   return (
@@ -29,6 +30,9 @@ export default function Page() {
           </Button>
         </div>
       </header>
+
+      {/* Applications Table */}
+      <ApplicationsTable />
     </>
   );
 }

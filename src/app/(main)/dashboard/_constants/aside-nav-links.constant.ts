@@ -22,6 +22,12 @@ export const asideNavLinks: AsideNavLink[] = [
   },
   {
     id: crypto.randomUUID(),
+    label: "Kanban",
+    href: "/dashboard/kanban",
+    icon: "kanban",
+  },
+  {
+    id: crypto.randomUUID(),
     label: "Analytics",
     href: "/dashboard/analytics",
     icon: "analytics",

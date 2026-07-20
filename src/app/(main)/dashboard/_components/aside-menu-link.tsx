@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/shared/lib/utils/tailwind-merge";
-import { AppWindow, BarChart2, Home } from "lucide-react";
+import { AppWindow, BarChart2, Home, SquareKanban } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -9,6 +9,7 @@ const icons = {
   dashboard: <Home size={16} />,
   analytics: <BarChart2 size={16} />,
   applications: <AppWindow size={16} />,
+  kanban: <SquareKanban size={16} />
 };
 
 export type iconType = keyof typeof icons;

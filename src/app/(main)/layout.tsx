@@ -12,7 +12,7 @@ export default function PublicLayout({
   return (
     <div className="Public-Layout flex min-h-screen" id="PublicLayout">
       {/* Aside */}
-      <aside className="md:min-w-70 border-e border-[#464554] p-4 md:p-6 flex flex-col gap-6">
+      <aside className="md:min-w-70 border-e border-[#464554] p-4 md:p-6 flex flex-col gap-6 relative">
         {/* Logo */}
         <AsideLogo />
 

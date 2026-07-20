@@ -23,7 +23,7 @@ declare module "next-auth" {
 
 declare module "next-auth/jwt" {
   interface JWT {
-    access_token: User["token"];
+    token: User["token"];
     user: User["data"];
     maxAge?: number;
   }

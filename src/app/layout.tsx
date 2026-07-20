@@ -30,7 +30,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn(
-        "h-full bg-bg text-white",
+        "h-full bg-bg! text-white dark",
         "antialiased",
         inter.variable,
         inter.className,

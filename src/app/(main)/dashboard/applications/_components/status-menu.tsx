@@ -24,8 +24,10 @@ export default function StatusMenu() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-gray-500/10 rounded-lg">
         <DropdownMenuGroup>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
+          <DropdownMenuItem>Applied</DropdownMenuItem>
+          <DropdownMenuItem>Interviewing</DropdownMenuItem>
+          <DropdownMenuItem>Considering</DropdownMenuItem>
+          <DropdownMenuItem>Rejected</DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>

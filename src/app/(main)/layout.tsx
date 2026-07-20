@@ -27,7 +27,7 @@ export default function PublicLayout({
       </aside>
 
       {/* Header And Main */}
-      <div className="header-main grow">
+      <div className="header-main min-w-0 grow">
         {/* Header */}
         <header className="py-3 px-6 border-b border-[#464554]">
           {/* Search Bar */}
@@ -35,7 +35,7 @@ export default function PublicLayout({
         </header>
 
         {/* Main */}
-        <main className="p-8">{children}</main>
+        <main className="min-w-0 overflow-x-hidden p-8">{children}</main>
       </div>
     </div>
   );

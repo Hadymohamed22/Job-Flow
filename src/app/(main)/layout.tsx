@@ -29,9 +29,12 @@ export default function PublicLayout({
       {/* Header And Main */}
       <div className="header-main min-w-0 grow">
         {/* Header */}
-        <header className="py-3 px-6 border-b border-[#464554]">
+        <header className="py-3 px-6 border-b border-[#464554] flex items-center gap-2">
           {/* Search Bar */}
           <SearchBar />
+
+          {/* New Application Button */}
+          <NewApplicationButton className="py-2 px-4 md:py-2 md:px-6" />
         </header>
 
         {/* Main */}

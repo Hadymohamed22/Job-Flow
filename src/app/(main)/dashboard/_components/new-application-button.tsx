@@ -1,12 +1,20 @@
 import { Button } from "@/shared/components/ui/button";
+import { cn } from "@/shared/lib/utils/tailwind-merge";
 import { FilePlusCorner, Plus } from "lucide-react";
 import Link from "next/link";
 
-export default function NewApplicationButton() {
+type Props = {
+  className?: string;
+};
+
+export default function NewApplicationButton({ className }: Props) {
   return (
     <Button
       asChild
-      className="rounded-full md:rounded-lg p-2 md:py-2.5 md:px-6"
+      className={cn(
+        "rounded-full md:rounded-lg p-2 md:py-2.5 md:px-6",
+        className,
+      )}
     >
       <Link href={"/dashboard/applications/new-application"}>
         {/* Plus Icon */}

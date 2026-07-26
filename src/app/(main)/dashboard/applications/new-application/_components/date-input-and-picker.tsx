@@ -37,14 +37,20 @@ function isValidDate(date: Date | undefined) {
   return !isNaN(date.getTime());
 }
 
-export default function DateInputAndPicker() {
+type Props = {
+  value?: string;
+  onChange: (value: string) => void;
+  error?: string;
+};
+
+export default function DateInputAndPicker({ value, onChange, error }: Props) {
   // States
   const [open, setOpen] = React.useState(false);
   const [date, setDate] = React.useState<Date | undefined>(
-    new Date("2027-06-01"),
+    value ? new Date(value) : new Date(),
   );
   const [month, setMonth] = React.useState<Date | undefined>(date);
-  const [value, setValue] = React.useState(formatDate(date));
+  const [inputValue, setInputValue] = React.useState(value || formatDate(date));
 
   return (
     <Field className="w-full">
@@ -52,15 +58,16 @@ export default function DateInputAndPicker() {
         <div className="input-group-container grow">
           <InputGroupInput
             id="date-required"
-            value={value}
+            value={inputValue}
             placeholder="June 01, 2025"
             className="placeholder:text-[#6B7280] text-[#DAE2FD]"
             onChange={(e) => {
-              const date = new Date(e.target.value);
-              setValue(e.target.value);
-              if (isValidDate(date)) {
-                setDate(date);
-                setMonth(date);
+              const nextDate = new Date(e.target.value);
+              setInputValue(e.target.value);
+              onChange(e.target.value);
+              if (isValidDate(nextDate)) {
+                setDate(nextDate);
+                setMonth(nextDate);
               }
             }}
             onKeyDown={(e) => {
@@ -96,9 +103,11 @@ export default function DateInputAndPicker() {
                   selected={date}
                   month={month}
                   onMonthChange={setMonth}
-                  onSelect={(date) => {
-                    setDate(date);
-                    setValue(formatDate(date));
+                  onSelect={(nextDate) => {
+                    setDate(nextDate);
+                    const formatted = formatDate(nextDate);
+                    setInputValue(formatted);
+                    onChange(formatted);
                     setOpen(false);
                   }}
                 />
@@ -107,6 +116,9 @@ export default function DateInputAndPicker() {
           </Popover>
         </InputGroupAddon>
       </InputGroup>
+      {error ? (
+        <p className="mt-2 text-[10px] font-jetbrains text-red-600">{error}</p>
+      ) : null}
     </Field>
   );
 }

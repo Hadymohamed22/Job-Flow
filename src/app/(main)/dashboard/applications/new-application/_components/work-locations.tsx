@@ -1,6 +1,8 @@
 import { Button } from "@/shared/components/ui/button";
 import { cn } from "@/shared/lib/utils/tailwind-merge";
 import { Building2, Cloud, TrendingUpDown } from "lucide-react";
+import { UseFormSetValue } from "react-hook-form";
+import { AddApplicationFormValues } from "../_schema/add-application.schema";
 
 type WorkLocationType = {
   key: WorkLocationsValue;
@@ -36,11 +38,13 @@ type Props = {
   setSelectedWorkLocation: React.Dispatch<
     React.SetStateAction<WorkLocationsValue>
   >;
+  setValue: UseFormSetValue<AddApplicationFormValues>;
 };
 
 export default function WorkLocations({
   selectedWorkLocation,
   setSelectedWorkLocation,
+  setValue,
 }: Props) {
   return (
     <div
@@ -50,6 +54,7 @@ export default function WorkLocations({
     >
       {workLocations.map((location) => (
         <Button
+          type="button"
           role="radio"
           aria-checked={selectedWorkLocation === location.value}
           key={location.key}
@@ -59,7 +64,10 @@ export default function WorkLocations({
             selectedWorkLocation === location.key &&
               "bg-custom-primary! text-[#0D0096]! hover:bg-custom-primary! cursor-default",
           )}
-          onClick={() => setSelectedWorkLocation(location.value)}
+          onClick={() => {
+            setSelectedWorkLocation(location.value);
+            setValue("workLocation", location.value);
+          }}
         >
           {/* Icon */}
           {location.icon}

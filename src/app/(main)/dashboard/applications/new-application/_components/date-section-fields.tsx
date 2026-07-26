@@ -1,7 +1,13 @@
 import { Label } from "@/shared/components/ui/label";
 import DateInputAndPicker from "./date-input-and-picker";
 
-export default function DateSectionFields() {
+type Props = {
+  value?: string;
+  onChange: (value: string) => void;
+  error?: string;
+};
+
+export default function DateSectionFields({ value, onChange, error }: Props) {
   return (
     <div className="date-field grow">
       {/* Label */}
@@ -10,7 +16,7 @@ export default function DateSectionFields() {
       </Label>
 
       {/* Text Input */}
-      <DateInputAndPicker />
+      <DateInputAndPicker value={value} onChange={onChange} error={error} />
     </div>
   );
 }

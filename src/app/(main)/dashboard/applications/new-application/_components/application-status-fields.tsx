@@ -9,7 +9,17 @@ import {
   SelectValue,
 } from "@/shared/components/ui/select";
 
-export default function ApplicationStatusFields() {
+type Props = {
+  value?: string;
+  onChange: (value: string) => void;
+  error?: string;
+};
+
+export default function ApplicationStatusFields({
+  value,
+  onChange,
+  error,
+}: Props) {
   // Variables
   const statuses: {
     label: ApplicationStatusType | "Select Status";
@@ -29,7 +39,7 @@ export default function ApplicationStatusFields() {
       </Label>
 
       {/* Text Input */}
-      <Select defaultValue="select-item">
+      <Select value={value || "select-item"} onValueChange={onChange}>
         <SelectTrigger className="w-full">
           <SelectValue />
         </SelectTrigger>
@@ -46,6 +56,9 @@ export default function ApplicationStatusFields() {
           </SelectGroup>
         </SelectContent>
       </Select>
+      {error ? (
+        <p className="mt-2 text-[10px] font-jetbrains text-red-600">{error}</p>
+      ) : null}
     </div>
   );
 }

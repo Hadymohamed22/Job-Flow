@@ -1,8 +1,15 @@
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
-import { Select } from "@/shared/components/ui/select";
+import ErrorMessage from "@/app/(auth)/_components/error-message";
+import { FieldErrors, UseFormRegister } from "react-hook-form";
+import { AddApplicationFormValues } from "../_schema/add-application.schema";
 
-export default function FinanceAndLogisticsFields() {
+type Props = {
+  register: UseFormRegister<AddApplicationFormValues>;
+  errors: FieldErrors<AddApplicationFormValues>;
+};
+
+export default function FinanceAndLogisticsFields({ register, errors }: Props) {
   // Variables
   return (
     <div className="finance-and-logistics-fields flex flex-col gap-4 md:gap-6">
@@ -18,9 +25,18 @@ export default function FinanceAndLogisticsFields() {
           {/* Text Input */}
           <Input
             placeholder="9000"
-            id={"Salary"}
-            className="bg-[#060E20]! placeholder:text-[#6B7280] py-4"
+            id="Salary"
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            className="bg-[#060E20]! placeholder:text-[#6B7280] py-4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            {...register("salary")}
           />
+          {errors.salary ? (
+            <ErrorMessage
+              message={errors.salary.message || "Salary is required"}
+            />
+          ) : null}
         </div>
 
         {/* Job URL Input */}
@@ -33,9 +49,15 @@ export default function FinanceAndLogisticsFields() {
           {/* Text Input */}
           <Input
             placeholder="https://linkedin.com/jobs/..."
-            id={"JobURL"}
+            id="JobURL"
             className="bg-[#060E20]! placeholder:text-[#6B7280] py-4"
+            {...register("jobURL")}
           />
+          {errors.jobURL ? (
+            <ErrorMessage
+              message={errors.jobURL.message || "Job URL is required"}
+            />
+          ) : null}
         </div>
       </div>
 
@@ -51,10 +73,15 @@ export default function FinanceAndLogisticsFields() {
           {/* Select Input */}
           <Input
             placeholder="Linkedin"
-            id={"Source"}
+            id="Source"
             className="bg-[#060E20]! placeholder:text-[#6B7280] py-4"
+            {...register("source")}
           />
-          <Select></Select>
+          {errors.source ? (
+            <ErrorMessage
+              message={errors.source.message || "Source is required"}
+            />
+          ) : null}
         </div>
 
         {/* Contact Link Input */}
@@ -67,8 +94,9 @@ export default function FinanceAndLogisticsFields() {
           {/* Text Input */}
           <Input
             placeholder="Recruiter Contact Link"
-            id={"contact-link"}
+            id="contact-link"
             className="bg-[#060E20]! placeholder:text-[#6B7280] py-4"
+            {...register("contactLink")}
           />
         </div>
       </div>

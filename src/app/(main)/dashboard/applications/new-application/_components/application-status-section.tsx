@@ -11,7 +11,7 @@ export default function ApplicationStatusSection() {
     fieldState: { error },
   } = useController({
     control,
-    name: "applicationStatus",
+    name: "current_status",
   });
 
   return (

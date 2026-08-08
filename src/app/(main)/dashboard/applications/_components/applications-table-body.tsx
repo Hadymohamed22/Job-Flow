@@ -6,12 +6,16 @@ import { TableBody, TableCell, TableRow } from "@/shared/components/ui/table";
 import Image from "next/image";
 import useGetUserApplications from "../_hooks/use-get-user-applications";
 import TableRowSkeleton from "../_skeleton/table-row.skeleton";
+import { useRouter } from "next/navigation";
 
 type Props = {
   headerCellsLength: number;
 };
 
 export default function ApplicationsTableBody({ headerCellsLength }: Props) {
+  // Navigation
+  const router = useRouter();
+
   // Hooks
   const { applications, error, isLoading } = useGetUserApplications();
 
@@ -30,9 +34,11 @@ export default function ApplicationsTableBody({ headerCellsLength }: Props) {
 
   return (
     <TableBody>
+      {/* Loading State */}
       {isLoading ? (
         Array.from({ length: 5 }).map((_, i) => <TableRowSkeleton key={i} />)
       ) : error ? (
+        // Error State
         <TableRow className="hover:bg-transparent">
           <TableCell
             colSpan={headerCellsLength}
@@ -42,6 +48,7 @@ export default function ApplicationsTableBody({ headerCellsLength }: Props) {
           </TableCell>
         </TableRow>
       ) : !applications || applications.length === 0 ? (
+        // No Results State
         <TableRow className="hover:bg-transparent">
           <TableCell
             colSpan={headerCellsLength}
@@ -51,10 +58,14 @@ export default function ApplicationsTableBody({ headerCellsLength }: Props) {
           </TableCell>
         </TableRow>
       ) : (
+        // Applications Data
         applications.map((row) => (
           <TableRow
             key={row._id}
-            className="border-t border-[#46455480] first:border-0 hover:bg-white/2"
+            className="border-t border-[#46455480] first:border-0 hover:bg-white/2 cursor-pointer"
+            onClick={() => router.push(`/dashboard/applications/${row._id}`)}
+            role="link"
+            aria-label={`View application ${row.jobTitle}`}
           >
             <TableCell className="px-4 py-4 first:pl-6">
               <div className="flex items-center gap-3">

@@ -7,9 +7,11 @@ type Props = {
 export default function NotesContent({ notes }: Props) {
   return (
     <div className="notes-content flex flex-col gap-3">
-      {notes.map((note) => (
-        <NoteBox key={note} note={note} />
-      ))}
+      {notes.length === 0 ? (
+        <p className="text-xs md:text-sm text-gray-400">Not have notes yet</p>
+      ) : (
+        notes.map((note) => <NoteBox key={note} note={note} />)
+      )}
     </div>
   );
 }

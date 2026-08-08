@@ -3,13 +3,11 @@ import { NotebookPen, Plus } from "lucide-react";
 import NotesContent from "./notes-content";
 import { Input } from "@/shared/components/ui/input";
 
-export default function NotesBox() {
-  // Variables
-  const notes = [
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, excepturi facilis dolore quisquam aliquam reprehenderit.",
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem, laboriosam.",
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit illum ullam incidunt! Distinctio sint sit a nihil. Delectus, eos architecto!",
-  ];
+type Props = {
+  notes: string[];
+};
+
+export default function NotesBox({ notes }: Props) {
   return (
     <div className="notes-box bg-[#2D344966] border border-[#908FA033] rounded-lg p-4 col-span-1 lg:col-span-2">
       <header className="flex items-center justify-between mb-6">

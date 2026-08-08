@@ -1,12 +1,7 @@
 import { cn } from "@/shared/lib/utils/tailwind-merge";
+import { ApplicationCurrentStatus } from "../[id]/_types/application-details-response";
 
-export type ApplicationStatusType =
-  | "Interviewing"
-  | "Applied"
-  | "Considering"
-  | "Rejected";
-
-const statusStyles: Record<ApplicationStatusType, string> = {
+const statusStyles: Record<ApplicationCurrentStatus, string> = {
   Interviewing: "border-indigo-500/40 bg-indigo-500/15 text-indigo-300",
   Applied: "border-emerald-500/40 bg-emerald-500/15 text-emerald-400",
   Considering: "border-amber-500/40 bg-amber-500/15 text-amber-400",
@@ -14,7 +9,7 @@ const statusStyles: Record<ApplicationStatusType, string> = {
 };
 
 interface ApplicationStatusBadgeProps {
-  status: ApplicationStatusType;
+  status: ApplicationCurrentStatus;
   className?: string;
 }
 

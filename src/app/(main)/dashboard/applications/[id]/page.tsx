@@ -15,7 +15,7 @@ export default async function Page({ params }: Props) {
       <BackToApplications />
 
       {/* Application Details */}
-      <ApplicationDetails />
+      <ApplicationDetails application_id={id} />
     </>
   );
 }

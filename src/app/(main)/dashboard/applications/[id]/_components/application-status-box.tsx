@@ -22,6 +22,13 @@ type Props = {
 };
 
 export default function ApplicationStatusBox({ status, date }: Props) {
+  // Variables
+  const formatted = new Date(date).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+
   return (
     <div
       style={
@@ -42,7 +49,7 @@ export default function ApplicationStatusBox({ status, date }: Props) {
 
       {/* Date */}
       <p className="text-[0.625rem] md:text-xs font-jetbrains text-gray-500">
-        {date}
+        {formatted}
       </p>
     </div>
   );

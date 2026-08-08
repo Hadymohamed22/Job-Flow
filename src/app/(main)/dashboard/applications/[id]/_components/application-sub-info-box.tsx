@@ -24,7 +24,13 @@ export default function ApplicationSubInfoBox({ title, variant, info }: Props) {
 
       {/* Info */}
       <p className="text-gray-50 text-[0.625rem] md:text-xs mt-1 font-jetbrains">
-        {info}
+        {variant === "date"
+          ? new Date("2026-08-22T21:00:00.000Z").toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })
+          : info}
       </p>
     </div>
   );

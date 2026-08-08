@@ -2,7 +2,9 @@ import { Button } from "@/shared/components/ui/button";
 import { MessageCircleMore, UserSquare } from "lucide-react";
 import Link from "next/link";
 
-export default function RecruiterContactBox() {
+type Props = { recruiterContact: string };
+
+export default function RecruiterContactBox({ recruiterContact }: Props) {
   return (
     <div className="recruiter-contact-box bg-[#2D344966] border border-[#908FA033] rounded-lg p-4 min-w-60">
       {/* Title */}
@@ -13,7 +15,11 @@ export default function RecruiterContactBox() {
 
       {/* Contact Button */}
       <Button variant={"outline"} asChild className="w-full">
-        <Link href={"https://wa.me/201029379363"} className="text-violet-400">
+        <Link
+          href={recruiterContact}
+          className="text-violet-400"
+          target="_blank"
+        >
           <MessageCircleMore />
           <span>Contact Now</span>
         </Link>

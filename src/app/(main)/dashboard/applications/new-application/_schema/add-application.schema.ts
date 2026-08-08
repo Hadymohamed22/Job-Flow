@@ -14,7 +14,7 @@ export const addApplicationSchema = z.object({
   }),
   jobURL: z.string().trim().min(1, "Job URL is required"),
   source: z.string().trim().min(1, "Source is required"),
-  applicationStatus: z.enum(
+  current_status: z.enum(
     ["Applied", "Interviewing", "Considering", "Rejected"],
     {
       error: "Application status is required",

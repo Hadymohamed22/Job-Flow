@@ -17,7 +17,7 @@ import {
 import useCreateApplication from "../_hooks/use-create-application";
 import ErrorBox from "@/shared/components/error-box";
 import { useRouter } from "next/navigation";
-import { errorToast, successToast } from "@/shared/lib/utils/toasts.util";
+import { successToast } from "@/shared/lib/utils/toasts.util";
 
 export default function AddApplicationFields() {
   // Navigation
@@ -36,7 +36,7 @@ export default function AddApplicationFields() {
       salary: "",
       jobURL: "",
       source: "",
-      applicationStatus: "Applied",
+      current_status: "Applied",
       date: "",
       "company-image": undefined as unknown as File,
       notes: "",
@@ -60,7 +60,7 @@ export default function AddApplicationFields() {
       successToast("Application created successfully");
       router.push("/dashboard/applications");
     } catch (err) {
-      errorToast(
+      console.error(
         err instanceof Error ? err.message : "Failed to create application",
       );
     }
@@ -94,7 +94,12 @@ export default function AddApplicationFields() {
         {/* Notes */}
         <NotesSection register={register} errors={errors} />
 
-        {error ? <ErrorBox message={error.message} /> : null}
+        {error ? (
+          <ErrorBox
+            message={error.message}
+            className="mx-0 max-w-full text-center justify-center"
+          />
+        ) : null}
 
         {/* Submit OR Cancel */}
         <div className="submit-cancel flex flex-col md:flex-row md:items-center md:justify-end gap-4 mt-4 md:mt-10">

@@ -20,7 +20,7 @@ export async function createApplicationAction(
   formData.append("salary", values.salary);
   formData.append("jobURL", values.jobURL);
   formData.append("source", values.source);
-  formData.append("applicationStatus", values.applicationStatus);
+  formData.append("current_status", values.current_status);
   formData.append("date", values.date);
   formData.append("company-image", values["company-image"]);
 

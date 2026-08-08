@@ -12,7 +12,7 @@ type ApplicationDataType = {
   salary: number;
   jobURL: string;
   source: string;
-  applicationStatus: "Applied" | "Interviewing" | "Considering" | "Rejected";
+  current_status: "Applied" | "Interviewing" | "Considering" | "Rejected";
   date: string;
   userId: string;
   companyImageURL: string;

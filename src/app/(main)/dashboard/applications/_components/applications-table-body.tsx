@@ -80,7 +80,7 @@ export default function ApplicationsTableBody({ headerCellsLength }: Props) {
             </TableCell>
 
             <TableCell className="px-4 py-4">
-              <ApplicationStatusBadge status={row.applicationStatus} />
+              <ApplicationStatusBadge status={row.current_status} />
             </TableCell>
 
             <TableCell className="px-4 py-4 text-gray-300">

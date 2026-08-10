@@ -18,7 +18,6 @@ type Props = {
 export default function ApplicationDetails({ application_id }: Props) {
   // Hooks
   const { data, isLoading, error } = useGetApplicationDetails(application_id);
-  console.log(data?.companyImageURL);
 
   return (
     <div className="application-details mt-5">
@@ -65,7 +64,7 @@ export default function ApplicationDetails({ application_id }: Props) {
 
             {/* TimeLine & Notes */}
             <div className="grid gap-6 grid-cols-1 lg:grid-cols-3">
-              <NotesBox notes={data.notes} />
+              <NotesBox notes={data.notes} application_id={application_id} />
               <TimelineBox timeline={data.status_history} />
             </div>
           </>

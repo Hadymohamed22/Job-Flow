@@ -33,3 +33,17 @@ export type ApplicationDetailsResponse = {
   message: string;
   data: ApplicationDetails;
 };
+
+type AddNoteErrorResponse = {
+  error: boolean;
+};
+
+type AddNoteSuccessResponse = {
+  success: boolean;
+  data: ApplicationDetails;
+};
+
+export type AddNoteResponse = { message: string } & (
+  | AddNoteErrorResponse
+  | AddNoteSuccessResponse
+);

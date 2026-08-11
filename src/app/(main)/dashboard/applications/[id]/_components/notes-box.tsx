@@ -11,7 +11,7 @@ import useAddNote from "../_hooks/use-add-note";
 import { errorToast, successToast } from "@/shared/lib/utils/toasts.util";
 
 type Props = {
-  notes: string[];
+  notes: { _id: string; text: string }[];
   application_id: string;
 };
 

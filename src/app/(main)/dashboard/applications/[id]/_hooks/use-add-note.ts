@@ -17,7 +17,7 @@ export default function useAddNote(applicationId: string) {
 
       queryClient.setQueryData(queryKey, (old: ApplicationDetails) => ({
         ...old,
-        notes: [...(old?.notes ?? null), newNote],
+        notes: [...(old?.notes ?? null), { text: newNote }],
       }));
 
       return { previousData };

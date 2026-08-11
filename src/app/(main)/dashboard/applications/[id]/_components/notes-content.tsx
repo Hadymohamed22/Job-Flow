@@ -1,7 +1,7 @@
 import NoteBox from "./note-box";
 
 type Props = {
-  notes: string[];
+  notes: { text: string; _id: string }[];
 };
 
 export default function NotesContent({ notes }: Props) {
@@ -10,7 +10,7 @@ export default function NotesContent({ notes }: Props) {
       {notes.length === 0 ? (
         <p className="text-xs md:text-sm text-gray-400">Not have notes yet</p>
       ) : (
-        notes.map((note) => <NoteBox key={note} note={note} />)
+        notes.map((note) => <NoteBox key={note._id} note={note.text} />)
       )}
     </div>
   );

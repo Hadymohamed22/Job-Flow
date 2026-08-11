@@ -22,7 +22,7 @@ export type ApplicationDetails = {
   status_history: StatusHistoryItem[];
   date: string;
   fileName: string;
-  notes: string[] | [];
+  notes: { text: string; _id: string }[];
   companyImageURL: string;
   contactLink?: string;
   userId: string;

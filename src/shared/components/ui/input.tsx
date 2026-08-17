@@ -4,12 +4,10 @@ import * as React from "react";
 import { cn } from "@/shared/lib/utils/tailwind-merge";
 import { Eye, EyeClosed } from "lucide-react";
 
-function Input({
-  parentClassName,
-  className,
-  type,
-  ...props
-}: React.ComponentProps<"input"> & { parentClassName?: string }) {
+const Input = React.forwardRef<
+  HTMLInputElement,
+  React.ComponentProps<"input"> & { parentClassName?: string }
+>(function Input({ parentClassName, className, type, ...props }, ref) {
   // States
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -22,6 +20,7 @@ function Input({
   return (
     <div className={cn("relative", parentClassName)}>
       <input
+        ref={ref}
         type={type !== "password" ? type : showPassword ? "text" : "password"}
         data-slot="input"
         className={cn(
@@ -43,6 +42,6 @@ function Input({
       )}
     </div>
   );
-}
+});
 
 export { Input };

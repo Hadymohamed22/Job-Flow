@@ -54,7 +54,7 @@ export default function NotesBox({ notes, application_id }: Props) {
       </h4>
 
       {/* Notes Content */}
-      <NotesContent notes={notes} />
+      <NotesContent notes={notes} application_id={application_id} />
 
       {/* Add Note Form */}
       <form

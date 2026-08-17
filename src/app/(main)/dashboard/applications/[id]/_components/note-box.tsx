@@ -9,12 +9,15 @@ import useEditNote from "../_hooks/use-edit-note";
 import { Loader } from "lucide-react";
 import { errorToast, successToast } from "@/shared/lib/utils/toasts.util";
 import { memo } from "react";
+import DeleteNote from "./delete-note";
 
 type Props = {
   note: { text: string; _id: string };
   editable: boolean;
   onEditStart: (id: string) => void;
   onEditEnd: () => void;
+  onDelete: (id: string) => void;
+  undoDelete: (id: string) => void;
   application_id: string;
 };
 
@@ -23,6 +26,8 @@ function NoteBox({
   editable,
   onEditStart,
   onEditEnd,
+  onDelete,
+  undoDelete,
   application_id,
 }: Props) {
   // Form
@@ -126,15 +131,11 @@ function NoteBox({
         )}
 
         {/* Delete Action */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="py-2 min-w-fit px-4 hover:text-red-500!"
-          aria-label="Delete note"
-          type="button"
-        >
-          Delete
-        </Button>
+        <DeleteNote
+          note_id={note._id}
+          onDelete={onDelete}
+          undoDelete={undoDelete}
+        />
       </div>
     </form>
   );

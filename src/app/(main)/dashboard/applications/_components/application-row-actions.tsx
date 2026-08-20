@@ -1,15 +1,31 @@
 "use client";
 
 import { Button } from "@/shared/components/ui/button";
+import { useQueryClient } from "@tanstack/react-query";
 import { Pencil, Trash2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface ApplicationRowActionsProps {
-  applicationId: string;
+  data: ApplicationDataType;
 }
 
 export default function ApplicationRowActions({
-  applicationId,
+  data,
 }: ApplicationRowActionsProps) {
+  // Navigation
+  const router = useRouter();
+
+  // Variables
+  const queryClient = useQueryClient();
+
+  // Handlers
+  const handleEdit = () => {
+    queryClient.setQueryData<ApplicationDataType>(
+      ["application", data._id],
+      data,
+    );
+    router.push(`/dashboard/applications/edit-application/${data._id}`);
+  };
   return (
     <div className="flex items-center justify-end gap-2">
       <Button
@@ -17,7 +33,10 @@ export default function ApplicationRowActions({
         variant="outline"
         size="sm"
         className="h-8 gap-1.5 px-3 text-[#DAE2FD] hover:text-gray-200"
-        onClick={() => console.log("edit", applicationId)}
+        onClick={(e) => {
+          e.stopPropagation();
+          handleEdit();
+        }}
       >
         <Pencil />
         Edit
@@ -27,7 +46,7 @@ export default function ApplicationRowActions({
         variant="destructive"
         size="sm"
         className="h-8 gap-1.5 px-3 duration-200 hover:text-red-500"
-        onClick={() => console.log("delete", applicationId)}
+        onClick={() => console.log("delete", data._id)}
       >
         <Trash2 />
         Delete

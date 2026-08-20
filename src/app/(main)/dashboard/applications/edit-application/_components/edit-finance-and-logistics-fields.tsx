@@ -1,19 +1,22 @@
+import ErrorMessage from "@/app/(auth)/_components/error-message";
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
-import ErrorMessage from "@/app/(auth)/_components/error-message";
+import { EditApplicationFormFields } from "../../new-application/_schema/add-application.schema";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
-import { AddApplicationFormValues } from "../_schema/add-application.schema";
 
 type Props = {
-  register: UseFormRegister<AddApplicationFormValues>;
-  errors: FieldErrors<AddApplicationFormValues>;
+  register: UseFormRegister<EditApplicationFormFields>;
+  errors: FieldErrors<EditApplicationFormFields>;
 };
 
-export default function FinanceAndLogisticsFields({ register, errors }: Props) {
+export default function EditFinanceAndLogisticsFields({
+  register,
+  errors,
+}: Props) {
   return (
     <div className="finance-and-logistics-fields flex flex-col gap-4 md:gap-6">
       {/* Salary And Job URL */}
-      <div className="salary-jobURL flex items-center flex-wrap gap-4 md:gap-6">
+      <div className="salary-jobURL flex items-center flex-wrap gap-4 md:gap-6 grow">
         {/* Salary Input */}
         <div className="salary-field grow">
           {/* Label */}

@@ -1,9 +1,15 @@
-import Link from "next/link";
-import PageHeaderText from "../../_components/page-header-text";
 import { ArrowLeft } from "lucide-react";
-import AddApplicationFields from "./_components/add-application-fields";
+import Link from "next/link";
+import PageHeaderText from "../../../_components/page-header-text";
+import EditFormFields from "../_components/edit-form-fields";
 
-export default function Page() {
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export default async function Page({ params }: Props) {
+  // Variables
+  const { id } = await params;
   return (
     <>
       {/* Header */}
@@ -21,14 +27,10 @@ export default function Page() {
         </Link>
 
         {/* New Applications Page Header */}
-        <PageHeaderText
-          title="New Application"
-          subTitle="Add a new job opportunity to your tracker."
-        />
+        <PageHeaderText title="Edit Application" />
       </header>
 
-      {/* Content */}
-      <AddApplicationFields />
+      <EditFormFields applicationId={id} />
     </>
   );
 }

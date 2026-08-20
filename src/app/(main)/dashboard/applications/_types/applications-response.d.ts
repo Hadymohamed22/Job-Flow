@@ -8,19 +8,32 @@ type ApplicationDataType = {
   _id: string;
   companyName: string;
   jobTitle: string;
-  workLocation: "remote" | "on-site" | "hybrid";
+  workLocation: WorkLocationsValue;
   salary: number;
   jobURL: string;
   source: string;
-  current_status: "Applied" | "Interviewing" | "Considering" | "Rejected";
+  current_status: ApplicationCurrentStatus;
+  status_history: StatusHistoryItem[];
   date: string;
-  userId: string;
+  fileName: string;
+  notes: { text: string; _id: string }[];
   companyImageURL: string;
+  contactLink?: string;
+  userId: string;
 };
 
 type GetUserApplicationsSuccessResponse = {
   data: ApplicationDataType[];
 };
 
+// For One Application
+type GetUserApplicationSuccessResponse = {
+  data: ApplicationDataType;
+};
+
 type GetUserApplicationsResponse = GetUserApplicationsResponseBase &
   (GetUserApplicationsErrorResponse | GetUserApplicationsSuccessResponse);
+
+// For One Application
+type GetUserApplicationResponse = GetUserApplicationsResponseBase &
+  (GetUserApplicationsErrorResponse | GetUserApplicationSuccessResponse);

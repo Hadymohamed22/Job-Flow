@@ -1,6 +1,6 @@
 type Props = {
   title: string;
-  subTitle: string;
+  subTitle?: string;
 };
 
 export default function PageHeaderText({ title, subTitle }: Props) {

@@ -103,7 +103,7 @@ export default function ApplicationsTableBody({ headerCellsLength }: Props) {
             </TableCell>
 
             <TableCell className="px-4 py-4 last:pr-6">
-              <ApplicationRowActions applicationId={row._id} />
+              <ApplicationRowActions data={row} />
             </TableCell>
           </TableRow>
         ))

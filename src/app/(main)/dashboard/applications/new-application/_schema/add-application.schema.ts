@@ -34,4 +34,28 @@ export const addApplicationSchema = z.object({
   contactLink: z.string().optional(),
 });
 
+export const editApplicationSchema = addApplicationSchema
+  .extend({
+    "company-image": z
+      .custom<File>((value) => value instanceof File, {
+        message: "Company image must be a valid file",
+      })
+      .optional(),
+    existingImageUrl: z.boolean().optional(),
+    notes: z
+      .array(
+        z.object({
+          text: z.string(),
+          _id: z.string(),
+        }),
+      )
+      .optional(),
+  })
+  .refine((data) => !!data["company-image"] || !!data.existingImageUrl, {
+    message: "Company image is required",
+    path: ["company-image"],
+  });
+
 export type AddApplicationFormValues = z.infer<typeof addApplicationSchema>;
+
+export type EditApplicationFormFields = z.infer<typeof editApplicationSchema>;

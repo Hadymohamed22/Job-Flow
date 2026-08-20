@@ -1,5 +1,4 @@
 import { Label } from "@/shared/components/ui/label";
-import { ApplicationStatusType } from "../../_components/application-status-badge";
 import {
   Select,
   SelectContent,

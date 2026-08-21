@@ -102,7 +102,10 @@ export default function ApplicationsTableBody({ headerCellsLength }: Props) {
               {formatSalary(row.salary)}
             </TableCell>
 
-            <TableCell className="px-4 py-4 last:pr-6">
+            <TableCell
+              className="px-4 py-4 last:pr-6"
+              onClick={(e) => e.stopPropagation()}
+            >
               <ApplicationRowActions data={row} />
             </TableCell>
           </TableRow>

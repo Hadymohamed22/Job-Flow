@@ -47,3 +47,19 @@ export type AddNoteResponse = { message: string } & (
   | AddNoteErrorResponse
   | AddNoteSuccessResponse
 );
+
+// Delete Response
+type DeleteResponseBase = {
+  message: string;
+};
+
+type DeleteErrorResponse = {
+  error: boolean;
+};
+
+type DeleteSuccessResponse = {
+  data: ApplicationDetails;
+};
+
+export type DeleteResponse = DeleteResponseBase &
+  (DeleteErrorResponse | DeleteSuccessResponse);

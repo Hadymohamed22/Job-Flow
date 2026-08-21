@@ -2,8 +2,9 @@
 
 import { Button } from "@/shared/components/ui/button";
 import { useQueryClient } from "@tanstack/react-query";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
 import { useRouter } from "next/navigation";
+import DeleteApplicationAction from "./delete-application-action";
 
 interface ApplicationRowActionsProps {
   data: ApplicationDataType;
@@ -41,16 +42,11 @@ export default function ApplicationRowActions({
         <Pencil />
         Edit
       </Button>
-      <Button
-        type="button"
-        variant="destructive"
-        size="sm"
-        className="h-8 gap-1.5 px-3 duration-200 hover:text-red-500"
-        onClick={() => console.log("delete", data._id)}
-      >
-        <Trash2 />
-        Delete
-      </Button>
+      <DeleteApplicationAction
+        applicationId={data._id}
+        applicationName={data.jobTitle}
+        companyName={data.companyName}
+      />
     </div>
   );
 }

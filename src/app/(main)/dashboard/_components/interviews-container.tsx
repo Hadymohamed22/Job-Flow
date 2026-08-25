@@ -1,33 +1,32 @@
-import InterviewBox, { interviewDataType } from "./interview-box";
+import InterviewBox from "./interview-box";
 
 export default function InterviewsContainer() {
   const interviews: {
     id: string;
     title: string;
     company: string;
-    date: string;
-    type: interviewDataType;
+    companyImage: string;
   }[] = [
     {
       id: crypto.randomUUID(),
       company: "Microsoft",
       title: "Flutter Developer",
-      date: "Today, 2:00 PM",
-      type: "online",
+      companyImage:
+        "https://1000logos.net/wp-content/uploads/2021/04/Microsoft-logo.png",
     },
     {
       id: crypto.randomUUID(),
-      company: "Microsoft",
-      title: "Flutter Developer",
-      date: "Today, 2:00 PM",
-      type: "on-site",
+      company: "Google",
+      title: "React Developer",
+      companyImage:
+        "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
     },
     {
       id: crypto.randomUUID(),
-      company: "Microsoft",
-      title: "Flutter Developer",
-      date: "Today, 2:00 PM",
-      type: "phone",
+      company: "Amazon",
+      title: "Backend Engineer",
+      companyImage:
+        "https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo.png",
     },
   ];
   return (
@@ -37,8 +36,7 @@ export default function InterviewsContainer() {
         <InterviewBox
           key={interview.id}
           companyName={interview.company}
-          date={interview.date}
-          interviewType={interview.type}
+          companyImage={interview.companyImage}
           title={interview.title}
         />
       ))}

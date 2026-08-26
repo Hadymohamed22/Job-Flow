@@ -46,7 +46,7 @@ export async function editApplicationAction({
     },
   );
 
-  const payload = await res.json();
+  const payload: GetUserApplicationsResponse = await res.json();
 
   if (!res.ok) {
     const message =

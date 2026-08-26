@@ -5,26 +5,18 @@ import ApplicationColumnContent from "./application-column-content";
 import ApplicationColumnHeader from "./application-column-header";
 import { DragDropProvider, DragEndEvent } from "@dnd-kit/react";
 import { ApplicationCurrentStatus } from "../../applications/[id]/_types/application-details-response";
-
-export type MockApplicationType = {
-  id: string;
-  position: string;
-  company: string;
-  status: string;
-  appliedDate: string;
-  location: string;
-  description: string;
-};
+import { errorToast } from "@/shared/lib/utils/toasts.util";
+import useEditApplicationOptimisticUpdate from "../_hooks/use-edit-application-optimistic-update.hook";
 
 type Props = {
   data: ApplicationDataType[];
 };
 
 export default function ApplicationsColumns({ data }: Props) {
-  // States
+  // State: Store applications as local state (for UI optimistically)
   const [applications, setApplications] = useState<ApplicationDataType[]>(data);
 
-  // Variables
+  // Variables: Group by status
   const appliedApplications = applications.filter(
     (application) => application.current_status === "Applied",
   );
@@ -38,16 +30,31 @@ export default function ApplicationsColumns({ data }: Props) {
     (application) => application.current_status === "Rejected",
   );
 
+  // Hooks
+  const { editApplication } = useEditApplicationOptimisticUpdate();
+
   // Handlers
-  function handleDragEnd(event: DragEndEvent) {
+  async function handleDragEnd(event: DragEndEvent) {
     if (event.canceled) return;
 
     const { source, target } = event.operation;
     const applicationId = source?.id;
     const newStatus = target?.id;
 
-    if (!newStatus) return;
+    if (!newStatus || !applicationId) return;
 
+    // Find application to update
+    const applicationData = applications.find(
+      (app) => app._id === applicationId,
+    );
+
+    if (!applicationData) return;
+
+    // Only perform UI update if the status actually changes
+    if (applicationData.current_status === newStatus) return;
+
+    // Optimistically update local state for fast UI response (not strictly necessary, but keeps UI snappy)
+    const previousApplications = [...applications];
     setApplications((prev) =>
       prev.map((application) =>
         application._id === applicationId
@@ -58,6 +65,24 @@ export default function ApplicationsColumns({ data }: Props) {
           : application,
       ),
     );
+
+    try {
+      await editApplication({
+        applicationId: applicationId as string,
+        values: {
+          ...applicationData,
+          salary: String(applicationData.salary),
+          current_status: newStatus as ApplicationCurrentStatus,
+        },
+      });
+    } catch (err) {
+      // On error, revert to previous state and show error toast
+      setApplications(previousApplications);
+      errorToast(
+        (err instanceof Error && err.message) ||
+          "Failed to update application. State restored.",
+      );
+    }
   }
 
   return (

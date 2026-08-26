@@ -1,5 +1,11 @@
-import ApplicationsColumns from "./_components/applications-columns";
+import { Suspense } from "react";
+import ApplicationsColumnsSkeleton from "./_skeletons/applications-columns.skeleton";
+import ApplicationsColumnsContainer from "./_components/applications-columns-container";
 
 export default function Page() {
-  return <ApplicationsColumns />;
+  return (
+    <Suspense fallback={<ApplicationsColumnsSkeleton />}>
+      <ApplicationsColumnsContainer />
+    </Suspense>
+  );
 }

@@ -1,4 +1,4 @@
-type GetUserApplicationsResponseBase = { message: string };
+type ResponseBase = { message: string };
 
 type GetUserApplicationsErrorResponse = {
   error: boolean;
@@ -33,15 +33,14 @@ type GetUserApplicationSuccessResponse = {
   data: ApplicationDataType;
 };
 
-type GetUserApplicationsResponse = GetUserApplicationsResponseBase &
+type GetUserApplicationsResponse = ResponseBase &
   (GetUserApplicationsErrorResponse | GetUserApplicationsSuccessResponse);
 
 // For One Application
-type GetUserApplicationResponse = GetUserApplicationsResponseBase &
+type GetUserApplicationResponse = ResponseBase &
   (GetUserApplicationsErrorResponse | GetUserApplicationSuccessResponse);
 
 // User Statistics
-
 type GetUserStatisticsSuccessResponse = {
   data: {
     totalApplications: number;
@@ -55,9 +54,22 @@ type GetUserStatisticsErrorResponse = {
   error: boolean;
 };
 
-type GetUserStatisticsBase = {
-  message: string;
+type GetUserStatisticsResponse = ResponseBase &
+  (GetUserStatisticsSuccessResponse | GetUserStatisticsErrorResponse);
+
+// Chart Data
+type GetChartDataSuccessResponse = {
+  data: {
+    count: number;
+    date: string;
+    jobTitle: string;
+    companyName: string;
+  }[];
 };
 
-type GetUserStatisticsResponse = GetUserStatisticsBase &
-  (GetUserStatisticsSuccessResponse | GetUserStatisticsErrorResponse);
+type GetChartDataErrorResponse = {
+  error: boolean;
+};
+
+type GetChartDataResponse = ResponseBase &
+  (GetChartDataSuccessResponse | GetChartDataErrorResponse);

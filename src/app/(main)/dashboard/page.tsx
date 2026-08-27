@@ -3,11 +3,12 @@ import PageHeaderText from "./_components/page-header-text";
 import { Download } from "lucide-react";
 import Statistics from "./_components/statistics";
 import BoxTitle from "./_components/box-title";
-import ApplicationsChart from "./_components/applications-chart";
 import ActivityFeedContainer from "./_components/activity-feed-container";
 import InterviewsContainer from "./_components/interviews-container";
 import { Suspense } from "react";
 import StatisticsSkeleton from "./_skeletons/statistics.skeleton";
+import ApplicationsChartContainer from "./_components/application-chart-container";
+import ApplicationsChartSkeleton from "./_skeletons/application-chart.skeleton";
 
 export default function Dashboard() {
   return (
@@ -56,7 +57,9 @@ export default function Dashboard() {
           </div>
 
           {/* Chart */}
-          <ApplicationsChart />
+          <Suspense fallback={<ApplicationsChartSkeleton />}>
+            <ApplicationsChartContainer />
+          </Suspense>
         </div>
 
         {/* Activity Feed */}

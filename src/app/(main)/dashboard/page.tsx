@@ -10,6 +10,7 @@ import StatisticsSkeleton from "./_skeletons/statistics.skeleton";
 import ApplicationsChartContainer from "./_components/application-chart-container";
 import ApplicationsChartSkeleton from "./_skeletons/application-chart.skeleton";
 import UpcomingInterviewsSkeleton from "./_skeletons/upcoming-interviews.skeleton";
+import ActivityFeedSkeleton from "./_skeletons/activity-feed.skeleton";
 
 export default function Dashboard() {
   return (
@@ -70,7 +71,9 @@ export default function Dashboard() {
             <BoxTitle title={"Activity Feed"} />
           </div>
 
-          <ActivityFeedContainer />
+          <Suspense fallback={<ActivityFeedSkeleton />}>
+            <ActivityFeedContainer />
+          </Suspense>
         </div>
 
         {/* UpComing Interviews */}

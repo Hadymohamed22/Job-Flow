@@ -76,3 +76,20 @@ type GetUpcomingInterviewsSuccessResponse = {
 
 type GetUpcomingInterviewsResponse = ResponseBase &
   (GetUpcomingInterviewsSuccessResponse | ErrorResponseBase);
+
+// ActivityFeed
+type ActivityFeedItem = {
+  companyName: string;
+  jobTitle: string;
+  companyImageURL: string;
+  applicationId: string;
+  status: ApplicationStatusType;
+  changed_at: string;
+};
+
+type GetActivityFeedSuccessResponse = {
+  data: ActivityFeedItem[];
+};
+
+type GetActivityFeedResponse = ResponseBase &
+  (GetActivityFeedSuccessResponse | ErrorResponseBase);

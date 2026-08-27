@@ -6,6 +6,8 @@ import BoxTitle from "./_components/box-title";
 import ApplicationsChart from "./_components/applications-chart";
 import ActivityFeedContainer from "./_components/activity-feed-container";
 import InterviewsContainer from "./_components/interviews-container";
+import { Suspense } from "react";
+import StatisticsSkeleton from "./_skeletons/statistics.skeleton";
 
 export default function Dashboard() {
   return (
@@ -29,7 +31,9 @@ export default function Dashboard() {
       </header>
 
       {/* Statistics */}
-      <Statistics />
+      <Suspense fallback={<StatisticsSkeleton />}>
+        <Statistics />
+      </Suspense>
 
       {/* Activity Container */}
       <div

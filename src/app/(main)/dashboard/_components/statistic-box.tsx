@@ -9,7 +9,7 @@ import { StatisticTypeProp } from "./statistics";
 type Props = {
   title: string;
   icon: StatisticTypeProp;
-  data: string;
+  data: string | number;
 };
 
 export default function StatisticBox({ title, icon, data }: Props) {

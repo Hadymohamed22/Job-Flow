@@ -39,3 +39,25 @@ type GetUserApplicationsResponse = GetUserApplicationsResponseBase &
 // For One Application
 type GetUserApplicationResponse = GetUserApplicationsResponseBase &
   (GetUserApplicationsErrorResponse | GetUserApplicationSuccessResponse);
+
+// User Statistics
+
+type GetUserStatisticsSuccessResponse = {
+  data: {
+    totalApplications: number;
+    inConsidering: number;
+    activeInterviews: number;
+    responseRate: number;
+  };
+};
+
+type GetUserStatisticsErrorResponse = {
+  error: boolean;
+};
+
+type GetUserStatisticsBase = {
+  message: string;
+};
+
+type GetUserStatisticsResponse = GetUserStatisticsBase &
+  (GetUserStatisticsSuccessResponse | GetUserStatisticsErrorResponse);

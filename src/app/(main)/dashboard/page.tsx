@@ -3,7 +3,6 @@ import PageHeaderText from "./_components/page-header-text";
 import { Download } from "lucide-react";
 import Statistics from "./_components/statistics";
 import BoxTitle from "./_components/box-title";
-import Link from "next/link";
 import ApplicationsChart from "./_components/applications-chart";
 import ActivityFeedContainer from "./_components/activity-feed-container";
 import InterviewsContainer from "./_components/interviews-container";
@@ -71,14 +70,6 @@ export default function Dashboard() {
           <div className="header flex items-center justify-between border-b border-[#464554] pb-4">
             {/* Title */}
             <BoxTitle title={"Upcoming Interviews"} />
-
-            {/* View All */}
-            <Link
-              href={""}
-              className="text-[#DAE2FD] text-xs duration-300 hover:text-white min-w-fit"
-            >
-              View All
-            </Link>
           </div>
 
           {/* Interviews Box's Container */}

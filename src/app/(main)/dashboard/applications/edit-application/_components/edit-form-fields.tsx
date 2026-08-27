@@ -30,7 +30,7 @@ export default function EditFormFields({ applicationId }: Props) {
 
   // Hooks
   const { data, isLoading, error } = useApplicationData(applicationId);
-  const { editApplication, isPending } = useEditApplication(applicationId);
+  const { editApplication, isPending } = useEditApplication();
 
   // Variables
   const formattedDate = data?.date
@@ -72,7 +72,7 @@ export default function EditFormFields({ applicationId }: Props) {
   // Handlers
   const onSubmit: SubmitHandler<EditApplicationFormFields> = async (values) => {
     try {
-      await editApplication(values);
+      await editApplication({ values: values, applicationId });
       successToast("Application Edited successfully");
       router.push("/dashboard/applications");
     } catch (err) {

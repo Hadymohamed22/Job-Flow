@@ -20,6 +20,8 @@ type ApplicationDataType = {
   companyImageURL: string;
   contactLink?: string;
   userId: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 type GetUserApplicationsSuccessResponse = {

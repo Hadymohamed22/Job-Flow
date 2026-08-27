@@ -1,8 +1,5 @@
 type ResponseBase = { message: string };
-
-type GetUserApplicationsErrorResponse = {
-  error: boolean;
-};
+type ErrorResponseBase = { error: boolean };
 
 type ApplicationDataType = {
   _id: string;
@@ -34,11 +31,11 @@ type GetUserApplicationSuccessResponse = {
 };
 
 type GetUserApplicationsResponse = ResponseBase &
-  (GetUserApplicationsErrorResponse | GetUserApplicationsSuccessResponse);
+  (ErrorResponseBase | GetUserApplicationsSuccessResponse);
 
 // For One Application
 type GetUserApplicationResponse = ResponseBase &
-  (GetUserApplicationsErrorResponse | GetUserApplicationSuccessResponse);
+  (ErrorResponseBase | GetUserApplicationSuccessResponse);
 
 // User Statistics
 type GetUserStatisticsSuccessResponse = {
@@ -50,12 +47,8 @@ type GetUserStatisticsSuccessResponse = {
   };
 };
 
-type GetUserStatisticsErrorResponse = {
-  error: boolean;
-};
-
 type GetUserStatisticsResponse = ResponseBase &
-  (GetUserStatisticsSuccessResponse | GetUserStatisticsErrorResponse);
+  (GetUserStatisticsSuccessResponse | ErrorResponseBase);
 
 // Chart Data
 type GetChartDataSuccessResponse = {
@@ -67,9 +60,19 @@ type GetChartDataSuccessResponse = {
   }[];
 };
 
-type GetChartDataErrorResponse = {
-  error: boolean;
+type GetChartDataResponse = ResponseBase &
+  (GetChartDataSuccessResponse | ErrorResponseBase);
+
+// Upcoming Interviews
+type GetUpcomingInterviewsSuccessResponse = {
+  data: {
+    _id: string;
+    companyName: string;
+    jobTitle: string;
+    companyImageURL: string;
+    interviewDate: string;
+  }[];
 };
 
-type GetChartDataResponse = ResponseBase &
-  (GetChartDataSuccessResponse | GetChartDataErrorResponse);
+type GetUpcomingInterviewsResponse = ResponseBase &
+  (GetUpcomingInterviewsSuccessResponse | ErrorResponseBase);

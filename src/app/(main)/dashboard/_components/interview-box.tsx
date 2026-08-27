@@ -20,6 +20,7 @@ export default function InterviewBox({
           alt={companyName + " logo"}
           width={40}
           height={40}
+          unoptimized
         />
       </div>
 

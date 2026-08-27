@@ -1,3 +1,5 @@
+import ErrorMessage from "@/app/(auth)/_components/error-message";
+import getUserStatisticsAction from "../_actions/get-user-statistics.action";
 import StatisticBox from "./statistic-box";
 
 export type StatisticTypeProp =
@@ -6,45 +8,50 @@ export type StatisticTypeProp =
   | "response-rate"
   | "in-consider";
 
-type StatisticDataType = {
-  id: string;
-  title: string;
-  type: StatisticTypeProp;
-  data: string;
-};
-
-export default function Statistics() {
+export default async function Statistics() {
   // Variables
-  const statisticsData: StatisticDataType[] = [
+  let statisticsData;
+  try {
+    statisticsData = await getUserStatisticsAction();
+  } catch (error) {
+    return (
+      <ErrorMessage
+        message={(error as Error).message || "Failed to load statistics."}
+      />
+    );
+  }
+
+  // Convert returned object to array for StatisticBox components
+  const statistics = [
     {
-      id: crypto.randomUUID(),
+      id: "applications",
       title: "Total Applications",
-      type: "applications",
-      data: "142",
+      data: statisticsData.totalApplications,
+      type: "applications" as StatisticTypeProp,
     },
     {
-      id: crypto.randomUUID(),
-      title: "In Considering",
-      type: "in-consider",
-      data: "2",
+      id: "in-consider",
+      title: "In Consideration",
+      data: statisticsData.inConsidering,
+      type: "in-consider" as StatisticTypeProp,
     },
     {
-      id: crypto.randomUUID(),
+      id: "interviews",
       title: "Active Interviews",
-      type: "interviews",
-      data: "8",
+      data: statisticsData.activeInterviews,
+      type: "interviews" as StatisticTypeProp,
     },
     {
-      id: crypto.randomUUID(),
+      id: "response-rate",
       title: "Response Rate",
-      type: "response-rate",
-      data: "32%",
+      data: statisticsData.responseRate + "%",
+      type: "response-rate" as StatisticTypeProp,
     },
   ];
 
   return (
     <section className="statistics grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 my-6 md:my-8">
-      {statisticsData.map((s) => (
+      {statistics.map((s) => (
         <StatisticBox key={s.id} data={s.data} icon={s.type} title={s.title} />
       ))}
     </section>

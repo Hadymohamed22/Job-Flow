@@ -10,13 +10,15 @@ import { signOut } from "next-auth/react";
 import useEditUserInfo from "../_hooks/use-edit-user-info";
 import { Loader } from "lucide-react";
 import { errorToast, successToast } from "@/shared/lib/utils/toasts.util";
+import DeleteAccount from "./delete-account";
 
 type Props = {
+  id?: string;
   fullname?: string;
   email?: string;
 };
 
-export default function EditUserInfoForm({ fullname, email }: Props) {
+export default function EditUserInfoForm({ id, fullname, email }: Props) {
   // Forms
   const {
     handleSubmit,
@@ -47,10 +49,10 @@ export default function EditUserInfoForm({ fullname, email }: Props) {
 
   // Effects
   useEffect(() => {
-    if (!fullname || !email) {
+    if (!fullname || !email || !id) {
       signOut();
     }
-  }, [fullname, email]);
+  }, [fullname, email, id]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -62,11 +64,9 @@ export default function EditUserInfoForm({ fullname, email }: Props) {
       />
 
       {/* Actions */}
-      <div className="actions mt-6 md:mt-8 pt-6 md:pt-8 border-t border-[#46455480] flex items-center gap-4 justify-end">
-        {/* Delete */}
-        <Button type="button" variant={"destructive"}>
-          Delete Account
-        </Button>
+      <div className="actions mt-6 md:mt-8 pt-6 md:pt-8 border-t border-[#46455480] flex flex-col md:flex-row items-stretch md:items-center gap-4 md:justify-end">
+        {/* Delete Account */}
+        <DeleteAccount id={id!} />
 
         {/* Save Changes */}
         <Button disabled={!isDirty || isPending}>

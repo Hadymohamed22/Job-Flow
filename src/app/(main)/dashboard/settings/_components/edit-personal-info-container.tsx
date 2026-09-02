@@ -11,6 +11,7 @@ export default async function EditPersonalInfoContainer() {
       <EditUserInfoForm
         fullname={session?.user?.fullName}
         email={session?.user?.email}
+        id={session?.user?._id}
       />
     </div>
   );

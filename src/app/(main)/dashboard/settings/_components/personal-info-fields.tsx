@@ -22,7 +22,7 @@ export default function PersonalInfoFields({
         Personal Info
       </h4>
 
-      <div className="fields flex items-center gap-4 md:gap-6">
+      <div className="fields flex items-center gap-4 md:gap-6 flex-wrap">
         {/* Full Name Input */}
         <div className="username-field grow">
           <Label htmlFor="fullName" className="text-[#908FA0]">

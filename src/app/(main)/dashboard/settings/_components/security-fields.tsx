@@ -1,9 +1,10 @@
+import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
 
 export default function SecurityFields() {
   return (
-    <div className="security-fields pt-6 md:pt-8 border-t border-[#46455480]">
+    <form className="security-fields">
       {/* Title */}
       <h4 className="font-semibold text-xl md:text-2xl text-[#DAE2FD] border-s-4 border-[#DAE2FD] ps-4 mb-6">
         Security
@@ -55,6 +56,12 @@ export default function SecurityFields() {
           />
         </div>
       </div>
-    </div>
+
+      {/* Actions */}
+      <div className="actions mt-6 md:mt-8 pt-6 md:pt-8 border-t border-[#46455480] flex items-center gap-4 justify-end">
+        {/* Save Changes */}
+        <Button>Change Password</Button>
+      </div>
+    </form>
   );
 }

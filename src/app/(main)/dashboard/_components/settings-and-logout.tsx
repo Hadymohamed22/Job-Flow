@@ -35,7 +35,7 @@ export default function SettingsAndLogout() {
         <div className="menu w-40 md:w-50 absolute left-full bottom-full p-2 rounded-md flex flex-col gap-2 bg-bg shadow shadow-custom-primary/20 text-sm">
           {/* Profile Link */}
           <Link
-            href={"/dashboard/profile-settings"}
+            href={"/dashboard/settings"}
             className="p-2 text-gray-400 duration-300 hover:text-gray-300"
           >
             Profile Settings

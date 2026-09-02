@@ -1,7 +1,6 @@
 import AsideLogo from "./dashboard/_components/aside-logo";
 import AsideMenu from "./dashboard/_components/aside-menu";
 import NewApplicationButton from "./dashboard/_components/new-application-button";
-import SearchBar from "./dashboard/_components/search-bar";
 import UserWelcome from "./dashboard/_components/user-welcome";
 
 export default function PublicLayout({
@@ -29,10 +28,7 @@ export default function PublicLayout({
       {/* Header And Main */}
       <div className="header-main min-w-0 grow">
         {/* Header */}
-        <header className="py-3 px-6 border-b border-[#464554] flex items-center gap-2">
-          {/* Search Bar */}
-          <SearchBar />
-
+        <header className="py-3 px-6 border-b border-[#464554] flex items-center gap-2 justify-end">
           {/* New Application Button */}
           <NewApplicationButton className="py-2 px-4 md:py-2 md:px-6" />
         </header>

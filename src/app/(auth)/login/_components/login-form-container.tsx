@@ -1,0 +1,27 @@
+import Link from "next/link";
+import AuthFormsFooter from "../../_components/auth-forms-footer";
+import LoginForm from "./login-form";
+import WelcomeAndLogoContainer from "./welcome-and-logo-container";
+
+export default function LoginFormContainer() {
+  return (
+    <div className="login-form-container p-8 flex flex-col gap-8 border border-[#908FA033] rounded-lg shadow-md shadow-[#171F33B2] mx-5 container md:w-6/12 lg:w-4/12">
+      {/* Logo & Welcome Message */}
+      <WelcomeAndLogoContainer
+        title="Welcome back"
+        subTitle="Log in to manage your applications"
+      />
+
+      {/* Login Form */}
+      <LoginForm />
+
+      {/* Don't Have An Account */}
+      <AuthFormsFooter>
+        Don{"'"}t have an account?{"  "}
+        <Link href="/register" className="duration-300 hover:text-white">
+          Sign up
+        </Link>
+      </AuthFormsFooter>
+    </div>
+  );
+}
